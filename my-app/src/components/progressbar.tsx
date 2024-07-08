@@ -1,6 +1,9 @@
 
-
-const ProgressBar = ({ currentDay, goal }) => {
+interface progres{
+currentDay:number, 
+goal:number
+}
+const ProgressBar = ({ currentDay, goal }:progres) => {
   const progressPercentage = (currentDay / goal) * 100;
 
   return (
