@@ -1,5 +1,5 @@
-// TokenPage.tsx
 "use client"
+
 import { useSearchParams } from 'next/navigation'
 import {
   Card,
@@ -8,10 +8,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Wallet } from "lucide-react";
+import { Suspense } from 'react';
 
 const TokenPage = () => {
-  const searchParams = useSearchParams()
-  const total  = searchParams.get('total');
+  const searchParams = useSearchParams();
+  const total = searchParams.get('total');
   const tokens = parseInt(total as string, 10) + 4000; // Parse 'total' from query and add 4000 to initialize
 
   return (
@@ -33,4 +34,10 @@ const TokenPage = () => {
   );
 };
 
-export default TokenPage;
+const TokenPageWrapper = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <TokenPage />
+  </Suspense>
+);
+
+export default TokenPageWrapper;
