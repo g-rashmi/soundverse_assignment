@@ -15,7 +15,7 @@ import ProgressBar from "./progressbar";
 
 const ChallengeCard = () => {
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [total, setTotal] = useState(4000);
+  const [total, setTotal] = useState(0);
   const [day, setDay] = useState(1);
   const [tokens, setTokens] = useState(500);
   const [goal, setGoal] = useState(3);
@@ -61,7 +61,7 @@ const ChallengeCard = () => {
           </p>
           <div className="flex items-center justify-between mt-4">
             <span className="flex items-center">
-              <Link href="/token">
+              <Link href={`/token?total=${total}`}>
                 <Wallet className="mr-2 h-7 w-7" />
               </Link>
               Day {day} of {goal} ({tokens} Tokens)
@@ -79,7 +79,6 @@ const ChallengeCard = () => {
           mode="single"
           selected={date}
           onSelect={setDate}
-          disablePast={!tune} 
           className="rounded-md"
 
         />
